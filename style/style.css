@@ -1,0 +1,24 @@
+.nav-container .nav-card {
+    max-width: 100%;
+    overflow: hidden;
+}
+.nav-container:not(.nav-swap) .nav-card {
+    display: none;
+}
+.nav-container:not(.nav-swap) .nav-card.show {
+    display: block !important;
+}
+.nav-container.nav-swap {
+    position: relative;
+    overflow: hidden;
+}
+.nav-container.nav-swap .nav-card {
+    position: absolute;
+    right: -110%;
+    transition: right 0;
+}
+.nav-container.nav-swap .nav-card.show {
+    position: relative;
+    right: 0;
+    transition: right 0.2s;
+}

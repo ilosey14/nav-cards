@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav-cards Example</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style type="text/css">
+        body {
+            max-width: 480px;
+        }
+        code {
+            padding: 5px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+        .nav-card {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>nav-cards</h1>
+    <p><i>Easy Navigable Markup</i></p>
+    <p>Create a responsive user experience with only HTML!</p>
+
+    <hr>
+
+    <h3>Simple Example</h3>
+    <div id="simple-example" class="nav-container">
+        <!-- card 1 -->
+        <div class="nav-card show" data-name="card-1">
+            <p>Card 1</p>
+            <input type="button" value="Card 2" data-nav="click:card-2">
+            <input type="button" value="Card 3" data-nav="click:card-3">
+        </div>
+
+        <!-- card 2 -->
+        <div class="nav-card" data-name="card-2">
+            <p>Card 2</p>
+            <input type="button" value="Card 1" data-nav="click:card-1">
+            <input type="button" value="Card 3" data-nav="click:card-3">
+        </div>
+
+        <!-- card 3 -->
+        <div class="nav-card" data-name="card-3">
+            <p>Card 3</p>
+            <input type="button" value="Card 1" data-nav="click:card-1">
+            <input type="button" value="Card 2" data-nav="click:card-2">
+        </div>
+    </div>
+
+    <br>
+
+    <h3>User Form Example</h3>
+    <p>
+        The <code>nav-swap</code> class adds transitions to your cards.
+    </p>
+    <p>Use a form element as the container to create responsive forms!</p>
+    <form id="user-form" class="nav-container nav-swap">
+        <!-- type selection -->
+        <div class="nav-card show" data-name="type-select">
+            <p>Select an action</p>
+            <input type="radio" name="type-select" id="text-type-radio" data-nav="change:text">
+            <label for="text-type-radio">Input some text</label>
+            <input type="radio" name="type-select" id="button-type-radio" data-nav="change:button">
+            <label for="button-type-radio">Click a button</label>
+            <input type="radio" name="type-select" id="file-type-radio" data-nav="change:file">
+            <label for="file-type-radio">Upload a file</label>
+        </div>
+
+        <!-- input some text -->
+        <div class="nav-card" data-name="text">
+            <p>Input some text</p>
+            <input type="text">
+            <input type="button" value="Continue" data-nav="click:end">
+            <br><br>
+            <input type="button" value="Back" data-nav="click:type-select">
+        </div>
+
+        <!-- click a button -->
+        <div class="nav-card" data-name="button">
+            <p>Click a button</p>
+            <input type="button" value="a button" data-nav="click:end">
+            <br><br>
+            <input type="button" value="Back" data-nav="click:type-select">
+        </div>
+
+        <!-- upload a file -->
+        <div class="nav-card" data-name="file">
+            <p>Upload a file</p>
+            <input type="file" name="user-file" data-nav="change:end">
+            <br><br>
+            <input type="button" value="Back" data-nav="click:type-select">
+        </div>
+
+        <!-- end -->
+        <div class="nav-card" data-name="end">
+            <p>That's it!</p>
+            <input type="reset" value="Start Over" data-nav="click:type-select">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    <p>Control nav-cards with javascript using the <code>navCards</code> object.</p>
+    <div>
+        <input type="button" value="Go to Start" onclick="navCards['user-form'].showCard('type-select')">
+        <input type="button" value="Go to End" onclick="navCards['user-form'].showCard('end')">
+    </div>
+
+    <script src="src/nav-cards.js"></script>
+    <script type="text/javascript">
+        document.getElementById('user-form').onsubmit = function (e) {
+            e.preventDefault();
+            alert('User is not an authorized example submitter. This incident will be reported.');
+        };
+    </script>
+</body>
+</html>
